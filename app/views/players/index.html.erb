@@ -1,0 +1,18 @@
+<h1>CrazyRaccoon</h1>
+<h3>Member</h3>
+<%= link_to "tournamentページへ", posts_index_path %>
+<%= link_to "player追加ページへ", new_player_path %>
+<div class="players-container">
+  <% @players.each do |t| %>
+    <div class="player">
+      <%= t.name %>
+      <%= t.genre %>
+      <%= t.twitter %>
+      <%= t.youtube %>
+      <%= t.twich %>
+      <%= link_to "詳細へ", player_path(t.id) %>
+      <%= link_to "編集する", edit_player_path(t.id) %>
+      <%= button_to "削除する", player_path(t.id), method: :delete %>
+    <% end %>
+    </div>
+</div>

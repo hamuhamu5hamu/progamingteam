@@ -1,0 +1,2 @@
+class AddtitleTopost < ApplicationRecord
+end

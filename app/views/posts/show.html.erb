@@ -1,0 +1,36 @@
+<body id="detailtournament">
+  <div class="container">
+    <div class="animate one">
+      <span>C</span><span>r</span><span>a</span><span>z</span><span>y</span> &nbsp;
+      <span>R</span><span>a</span><span>c</span><span>c</span><span>o</span><span>o</span><span>n</span>
+    </div>
+  </div>
+  <h1>tournament詳細</h1>
+    <table class="resulttable", border="5">
+      <tr>
+        <th>大会名</th>
+        <th>day</th>
+        <th>ゲーム名</th>
+        <th>結果</th>
+        <th>開始時間</th>
+        <th>終了時間</th>
+      </tr>
+      <tr>
+        <td><%= @posts.title %></td>
+        <td><%= @posts.day %></td>
+        <td><%= @posts.gamename %></td>
+        <td><%= @posts.score %></td>
+        <td><%= @posts.start_time %></td>
+        <td><%= @posts.end_time %></td>
+      </tr>
+    </table>
+    <p style="margin-top:50px;">
+      下の動画は、YoutubeでLiveされている様子が上がっています。<br>
+      他のチームの結果や、どういう試合内容だったかを確認したい方は、リンク先の動画を見てください。
+    </p>
+    <iframe style="margin-top: 15px; margin-bottom: 30px;" width="560" height="315" src="<%= @posts.image %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+    <br>
+
+  <%= link_to "CRWebページはこちら", blogs_home_path %>
+</body>

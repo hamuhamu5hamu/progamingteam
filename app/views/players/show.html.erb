@@ -1,0 +1,73 @@
+<body id="memmbershow">
+  <div class="container">
+    <div class="animate one">
+      <span>C</span><span>r</span><span>a</span><span>z</span><span>y</span> &nbsp;
+      <span>R</span><span>a</span><span>c</span><span>c</span><span>o</span><span>o</span><span>n</span>
+    </div>
+  </div>
+  <h1>Memberリスト</h1>
+  <div id="parent">
+    <div id="child1">
+      <h2>他のメンバー</h2>
+        <section class="accordion">
+          <div class="membertable">
+            <% @player.each do |p| %>
+              <input id="<%= p.genre %>a" type="checkbox" class="toggle">
+              <label class="Label" for="<%= p.genre %>a"><%= p.genre %>部門</label>
+                <div class="content">
+                  <div class="othermembers">
+                    <% @member.each do |m| %>
+                      <% if p.genre == m.genre then %>
+                        <% if m.name != @players.name then %>
+                          <%= link_to player_path(m.id), method: :get do %>
+                          <img src="<%=m.image%>", class = otherphoto>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              <br>
+            <% end %>
+          </div>
+        </section>
+    </div>
+    <div id="child2">
+      <div class="player">
+        <h2 class="playergenre"><%= @players.genre %>部門</h2>
+        <h2 class="playername"><%= @players.name %></h2>
+        <img src="<%=@players.image%>", class="playerimg">
+        <% if @players.youtube.empty? then %>
+          <h2 class="playeryoutube">このメンバーはYoutubeのアカウントを持っていません。</h2>
+        <% else %>
+          <h2 class="playeryoutube"><a href="<%= @players.youtube %>">Youtubeはこちら</a></h2>
+        <% end %>
+        <% if @players.montage.present? then %>
+          <h2>↓この選手のモンタージュ↓</h2>
+          <p>(モンタージュとは簡単に言えばその選手がうまく行ったものを集めたものです。)</p>
+          <iframe width="560" height="315" src="<%= @players.montage %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          </iframe>
+        <% end %>
+        <% if @players.twich.empty? then %>
+          <h2 class="playertwich">このメンバーはTwitchのアカウントを持っていません。</h2>
+        <% else %>
+          <h2 class="playertwich"><a href="<%= @players.twich %>">Twitchはこちら</a></h2>
+        <% end %>
+        <% if @players.twitter.empty? then %>
+          <h2 class="twitter-timeline">このメンバーはX(元Twitter)のアカウントを持っていません。</h2>
+        <% else %>
+          <h2>X(元Twitter)はこちら</a></h2>
+          <div class="tweet">
+            <a class="twitter-timeline" data-height="600" data-width="450" data-theme="dark" href="<%= @players.twitter %>">
+              この選手のX(元Twitter)アカウントです。
+            </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+            </script>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "CRWebページはこちら", blogs_home_path , class: 'list' , method: :get %>
+</body>

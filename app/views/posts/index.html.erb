@@ -1,0 +1,16 @@
+<h1>tournamentアプリ</h1>
+<h3>tournament一覧</h3>
+<%= link_to "memberページへ", players_index_path %>
+<%= link_to "tournament追加ページへ", new_post_path %>
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <div class="tournament">
+    <%= t.gamename %>
+    <%= t.score %>
+    <%= t.image %>
+    <%= link_to "詳細へ", post_path(t.id) %>
+    <%= link_to "編集する", edit_post_path(t.id) %>
+    <%= button_to "削除する", post_path(t.id), method: :delete %>
+    </div>
+  <% end %>
+</div>
