@@ -229,6 +229,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -246,7 +247,7 @@ DEPENDENCIES
   selenium-webdriver (>= 4.0.0.rc1)
   simple_calendar (~> 2.0)
   spring
-  sqlite3 (~> 1.4)
+  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
@@ -254,7 +255,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 3.0.6p216
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.4.17

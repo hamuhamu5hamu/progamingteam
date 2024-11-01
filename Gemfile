@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.4'
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -33,7 +35,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # gem 'splite3' # 開発環境ではsqlite3を利用
 
-  gem 'sqlite3', '~> 1.4'
+  # gem 'sqlite3', '~> 1.4'
   #gem 'sqlite3'をgem 'sqlite3', '~> 1.4'に変えた
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,7 +66,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'simple_calendar', '~> 2.0'
 
-
-group :production do
-  gem 'pg'
-end
