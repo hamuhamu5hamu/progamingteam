@@ -1,0 +1,2 @@
+class AddstarttimeTopost < ApplicationRecord
+end

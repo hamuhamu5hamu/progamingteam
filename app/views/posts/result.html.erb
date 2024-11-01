@@ -1,0 +1,44 @@
+<body id = "resultpage">
+  <div class="container">
+    <div class="animate one">
+      <span>C</span><span>r</span><span>a</span><span>z</span><span>y</span> &nbsp;
+      <span>R</span><span>a</span><span>c</span><span>c</span><span>o</span><span>o</span><span>n</span>
+    </div>
+  </div>
+  <div class="calender", id = "tournament">
+  <%= month_calendar events: @blogs do |date, blogs| %>
+    <%= date.day %>
+    <% blogs.each do |blog| %>
+    <div>
+      <%= link_to blog.title, blog %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
+  <div claa="resultt">
+    <p class="ta">
+      ↓大会の結果や、開催時間をまとめた表です。↓
+    </p>
+    <table class="resulttable", border="5">
+      <tr>
+        <th width="15%">大会名</th>
+        <th width="5%">day</th>
+        <th width="9%">ゲーム名</th>
+        <th width="15%">結果</th>
+        <th width="30%">開始時間</th>
+        <th width="30%">終了時間</th>
+      </tr>
+      <% @post.each do |p| %>
+        <tr>
+          <td><%= p.title %></td>
+          <td><%= p.day %></td>
+          <td><%= p.gamename %></td>
+          <td><%= p.score %></td>
+          <td><%= p.start_time %></td>
+          <td><%= p.end_time %></td>
+        </tr>
+        <% end %>
+    </table>
+    <%= link_to "CRWebページはこちら", blogs_home_path %>
+  </div>
+</body>

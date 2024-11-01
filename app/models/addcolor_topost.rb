@@ -1,0 +1,2 @@
+class AddcolorTopost < ApplicationRecord
+end

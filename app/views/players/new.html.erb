@@ -1,0 +1,31 @@
+<h1>Memberリスト</h1>
+<h3>新規Member</h3>
+<%= form_for @players do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 140 %>
+    <br>
+    <%= f.label :genre %>
+    <%= f.text_field :genre, :size => 140 %>
+    <br>
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter, :size => 140 %>
+    <br>
+    <%= f.label :youtube %>
+    <%= f.text_field :youtube, :size => 140 %>
+    <br>
+    <%= f.label :twich %>
+    <%= f.text_field :twich, :size => 140 %>
+    <br>
+    <%= f.label :image %>
+    <%= f.text_field :image, :size => 140 %>
+    <br>
+    <%= f.label :montage %>
+    <%= f.text_field :montage, :size => 140 %>
+    <br>
+    <%= f.label :achievements %>
+    <%= f.text_field :achievements, :size => 140 %>
+  </div>
+  <%= f.submit "Memberを保存する" %>
+<% end %>
+<%= link_to "Member一覧に戻る", players_index_path %>

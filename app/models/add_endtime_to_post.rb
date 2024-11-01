@@ -1,0 +1,2 @@
+class AddEndtimeToPost < ApplicationRecord
+end

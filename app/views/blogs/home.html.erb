@@ -1,0 +1,140 @@
+<body id="home">
+  <header>
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <div class="menu-content">
+          <ul>
+            <li>
+              <a href="#member", class="menu-item">member</a>
+            </li>
+            <li>
+              <a href="#tournament", class="menu-item">tournament</a>
+            </li>
+            <li>
+              <a href="#result", class="menu-item">result</a>
+            </li>
+            <li>
+              <a href="#crcup", class="menu-item">CRCUP</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="animate one">
+      <span>C</span><span>r</span><span>a</span><span>z</span><span>y</span> &nbsp;
+      <span>R</span><span>a</span><span>c</span><span>c</span><span>o</span><span>o</span><span>n</span>
+    </div>
+  </div>
+  <div class="haikei">
+    <div class = "toumei">
+      <div id = "member" style="height:30px;">
+      </div>
+      <div class="member">
+        <h1>member</h1>
+        <div class="Department">
+          <% @player.each do |p| %>
+            <a href="#<%= p.genre %>"><%= p.genre %></a>
+          <% end %>
+        </div>
+        <div class="membertable">
+          <% @player_genre.each do |p| %>
+          <div id = "<%= p[0] %>" style="height:30px;">
+          </div>
+            <h4 class = "a" style="color:red;"><%= p[0] %></h4>
+            <div class="yoko1">
+              <div class="yoko" style="width:calc(<%= p[1] %> * 25vw);">
+                <% @member.each do |m| %>
+                  <% if p[0] == m.genre then %>
+                    <%= link_to player_path(m.id), method: :get do %>
+                    <img src="<%=m.image%>", class = photo>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id = "tournament" style="height:30px;">
+  </div>
+  <div class="calender">
+    <h1 class = "schedule">Tournament schedule</h1>
+    <p>
+      このカレンダーでは、CRが出ている試合や、CRが開催しているCRCUPの日程を入力しています。
+    </p>
+    <%= month_calendar events: @blogs do |date, blogs| %>
+      <%= date.day %>
+      <% blogs.each do |blog| %>
+        <div>
+          <%= link_to blog.title, blog %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id = "result" style="height:30px;">
+  </div>
+  <div class="result">
+    <h1>result</h1>
+    <p>
+      CRが出場した大会の結果を表にまとめました詳しくみたい方は、下にある詳しくはこちらからご覧いただけます。
+    </p>
+    <table border="5", class= "table">
+      <tr>
+        <th>大会名</th>
+        <th>ゲーム名</th>
+        <th>結果</th>
+      </tr>
+      <% @post.each do |p| %>
+        <tr>
+          <td><%= p.title %></td>
+          <td><%= p.gamename %></td>
+          <td><%= p.score %></td>
+        </tr>
+      <% end %>
+    </table>
+    <p>
+      <%= link_to "詳しくはこちら", posts_result_path%>
+    </p>
+  </div>
+  <div id = "crcup" style="height:30px;">
+  </div>
+  <div class="crcup">
+    <h1>CRCUP</h1>
+    <p>
+      CrazyRaccoonではCRCUPという大会を運営、開催しています。<br>
+      CRCUPでは、主にAPEX,Valorant,StreetFighterなど、幅広いゲームで大会をしています。<br>
+      この大会では、CRがリーダーを決めて、そのリーダーがメンバーを決めます。<br>
+      そのメンバーはランクなどに基づいてポイントを決められています。<br>
+      そのポイントの合計が決められた合計ポイントを超えないようにメンバーを組みます。<br>
+      CRCUPのメンバーや、結果などをその都度postしてくれているアカウントがあります。
+    </p>
+    <div class = "tweet">
+      <a class="twitter-timeline" data-width="450" data-height="600" data-theme="dark" href="https://twitter.com/CrazyRaccoonCup?ref_src=twsrc%5Etfw">
+        Tweets by CrazyRaccoonCup
+      </a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8">
+      </script>
+    </div>
+  </div>
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // #menu-btn-check要素を取得
+    var menuBtnCheck = document.getElementById('menu-btn-check');
+    // 全ての .menu-item 要素を取得
+    var menuItems = document.querySelectorAll('.menu-item');
+    // 各 .menu-item 要素がクリックされたときの処理
+    menuItems.forEach(function(menuItem) {
+      menuItem.addEventListener('click', function() {
+        // #menu-btn-checkの状態を切り替える（チェックするまたは外す）
+        menuBtnCheck.checked = !menuBtnCheck.checked;
+      });
+    });
+  });
+</script>
